@@ -27,9 +27,7 @@ func GetUser(c *gin.Context) {
 	var user models.User
 	if err := config.DB.First(&user, id).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
-		return	
+		return
 	}
-	c.JSON(http.StatusOK, gin.H{
-		
-	})
+	c.JSON(http.StatusOK, serializers.SerializeUser(user))
 }
