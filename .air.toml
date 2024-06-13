@@ -1,0 +1,7 @@
+# .air.toml
+
+[build]
+cmd = "go run cmd/nebula_backend/main.go"
+bin = "tmp/main"
+full_bin = "tmp/main"
+kill = true
