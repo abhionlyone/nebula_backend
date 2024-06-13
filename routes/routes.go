@@ -9,5 +9,6 @@ import (
 func SetupRouter() *gin.Engine {
 	r := gin.Default()
 	r.GET("/users", controllers.GetUsers)
+	r.GET("/users/:id", controllers.GetUser)
 	return r
 }
