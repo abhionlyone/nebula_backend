@@ -14,20 +14,27 @@
 
    Ensure the environment variables `DB_HOST`, `DB_USER`, `DB_PASSWORD`, and `DB_NAME` are set in your `.env` file with your actual database details.
 
-3. **Generate Migrations**
-
+3. **Manage Database and Migrations**
    If you need to manage your database, you can use the `manage_db.sh` script. This script helps with creating and dropping the database. To create the database, run:
-
    ```bash
-   ./scripts/manage_db.sh --create
+   ./manage_db.sh --create
    ```
-   To drop the database, run:
 
+   To drop the database, run:
    ```bash
-   ./scripts/manage_db.sh --drop
+   ./manage_db.sh --drop
    ```
 
    Please note that dropping the database is irreversible and will delete all data.
+
+   To create a new migration, use the `create_migrations.sh` script. This script generates a new migration file with a timestamp and the provided name. To create a migration, run:
+   ```bash
+   ./create_migrations.sh
+   ```
+
+   You will be prompted to enter the migration name. Use underscores for spaces in the migration name. For example, if you want to create a migration to add a new table, you might name it `add_new_table`.
+
+   After creating the migration file, you can add your migration logic in the `Migrate` function and the rollback logic in the `Rollback` function within the generated file.
 
 4. **Apply Migrations**
 
