@@ -38,7 +38,7 @@
 
 4. **Apply Migrations**
 
-   The migrations are automatically applied to your database when you start the application by running the main Go file in `cmd/nebula_backend/main.go`.
+   The migrations are automatically applied to your database when you start the application using `air -c .air.toml` (with live reloading) or `go run cmd/nebula_backend/main.go` (without live reloading).
 
 5. **Run the Application**
 

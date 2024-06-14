@@ -19,6 +19,6 @@ func main() {
 	config.InitDB()
 	migrations.Migrate()
 
-	r := routes.SetupRouter()
-	r.Run(":8080")
+	e := routes.SetupRouter()
+	e.Logger.Fatal(e.Start(":8080"))
 }

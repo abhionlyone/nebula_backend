@@ -3,12 +3,16 @@ package routes
 import (
 	"nebula_backend/controllers"
 
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
-func SetupRouter() *gin.Engine {
-	r := gin.Default()
-	r.GET("/users", controllers.GetUsers)
-	r.GET("/users/:id", controllers.GetUser)
-	return r
+func SetupRouter() *echo.Echo {
+	e := echo.New()
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+	e.Use(middleware.RequestID())
+
+	e.GET("/users", controllers.GetUsers)
+	return e
 }

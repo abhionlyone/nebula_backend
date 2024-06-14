@@ -5,31 +5,17 @@ import (
 	"nebula_backend/models"
 	"nebula_backend/serializers"
 	"net/http"
-	"time"
 
-	"github.com/gin-gonic/gin"
+	"github.com/labstack/echo/v4"
 )
 
-func GetUsers(c *gin.Context) {
+func GetUsers(c echo.Context) error {
 	var users []models.User
-	last24Hours := time.Now().Add(-24 * time.Hour)
-	if err := config.DB.Where("created_at >= ?", last24Hours).Find(&users).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
+	if err := config.DB.Find(&users).Error; err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}
-	userCount := len(users)
-	c.JSON(http.StatusOK, gin.H{
-		"count": userCount,
-		"users": serializers.SerializeUsers(users),
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"message": "Users retrieved successfully",
+		"data":    serializers.SerializeUsers(users),
 	})
-}
-
-func GetUser(c *gin.Context) {
-	id := c.Param("id")
-	var user models.User
-	if err := config.DB.First(&user, id).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})
-		return
-	}
-	c.JSON(http.StatusOK, serializers.SerializeUser(user))
 }
