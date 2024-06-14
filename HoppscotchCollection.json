@@ -1,0 +1,31 @@
+{
+  "v": 2,
+  "name": "NebulaBackendAPIDocs",
+  "folders": [
+    {
+      "v": 2,
+      "name": "users",
+      "folders": [],
+      "requests": [
+        {
+          "v": "4",
+          "endpoint": "http://<<host>>/api/v1/users",
+          "name": "List Users",
+          "params": [],
+          "headers": [],
+          "method": "GET",
+          "auth": { "authType": "none", "authActive": true },
+          "preRequestScript": "",
+          "testScript": "",
+          "body": { "contentType": null, "body": null },
+          "requestVariables": []
+        }
+      ],
+      "auth": { "authType": "inherit", "authActive": true },
+      "headers": []
+    }
+  ],
+  "requests": [],
+  "headers": [],
+  "auth": { "authType": "none", "authActive": true }
+}

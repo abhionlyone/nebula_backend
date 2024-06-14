@@ -1,0 +1,12 @@
+{
+  "name": "Development",
+  "v": 1,
+  "id": "7831puthgqd",
+  "variables": [
+    {
+      "key": "host",
+      "value": "localhost:8080",
+      "secret": false
+    }
+  ]
+}
