@@ -12,7 +12,7 @@ func SetupRouter() *echo.Echo {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.RequestID())
-
-	e.GET("/users", controllers.GetUsers)
+	apiV1 := e.Group("/api/v1")
+	apiV1.GET("/users", controllers.GetUsers)
 	return e
 }
