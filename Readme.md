@@ -68,6 +68,6 @@
     
     [GIN-debug] GET /users --> myapp/controllers.GetUsers (3 handlers)
     [GIN-debug] Listening and serving HTTP on :8080
-    
-    This indicates that the database connection was successful, migrations were applied, and the server is running on port 8080.
     ```
+    This indicates that the database connection was successful, migrations were applied, and the server is running on port 8080.
+    
