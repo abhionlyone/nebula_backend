@@ -71,3 +71,14 @@
     ```
     This indicates that the database connection was successful, migrations were applied, and the server is running on port 8080.
     
+## Docker
+# For Development   
+docker-compose -f docker-compose.dev.yml up --build 
+
+# For Production
+docker-compose -f docker-compose.prod.yml up --build
+
+# To Create Docker Image
+docker build -t nebula_backend:latest -f Dockerfile.prod .
+docker tag nebula_backend:latest abhionlyone/nebula_backend:latest
+docker push abhionlyone/nebula_backend:latest
