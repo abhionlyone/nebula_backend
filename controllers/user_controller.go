@@ -5,13 +5,15 @@ import (
 	"nebula_backend/models"
 	"nebula_backend/serializers"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
 func GetUsers(c *gin.Context) {
 	var users []models.User
-	if err := config.DB.Find(&users).Error; err != nil {
+	last24Hours := time.Now().Add(-24 * time.Hour)
+	if err := config.DB.Where("created_at >= ?", last24Hours).Find(&users).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
