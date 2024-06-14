@@ -28,4 +28,6 @@ go.work
 tmp/
 tmp/main
 
+.env
+
 # End of https://www.toptal.com/developers/gitignore/api/go
